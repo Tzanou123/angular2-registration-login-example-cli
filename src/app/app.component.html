@@ -1,19 +1,85 @@
 ﻿<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="col-sm-8 col-sm-offset-2">
-            <alert></alert>
-            <router-outlet></router-outlet>
-        </div>
+
+<div class="row header_bar">
+    <div class="col-xs-12 col-sm-2 col-lg-2 header_logo">
+        <a href="/">TTIPP</a>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-lg-7">
+        <nav class="navbar-default">
+
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <a class="navbar-brand" routerLink="home">Home</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+                        <li class="homemenu subb" id="Home"><a routerLink="home"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                        <li class="dropdown subb" id="Category">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ideas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li id="all" class="all">
+                                    <a routerLink="ideas">all</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li id="About" class="subb"><a href="/about.php">About</a></li>
+                        <li id="Faq" class="subb"><a href="/faq.php">FAQ</a></li>
+                        <li id="Contact" class="subb"><a href="/contact.php">Contact</a></li>
+
+                        <li class="dropdown-user subb" id="Account">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li *ngIf="islogged" id="myaccount" class="myaccount">
+                                    <a routerLink="account">My account</a>
+                                </li>
+                                <li *ngIf="islogged" id="logout" class="logout">
+                                    <a [routerLink]="['/']" (click)=" logout() ">Logout</a>
+                                </li>
+
+                                <li *ngIf="!islogged" id="login" class="login">
+                                    <a routerLink="login">Login</a>
+                                </li>
+                                <li *ngIf="!islogged" id="register" class="register">
+                                    <a routerLink="register">Register</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-lg-3 header_idea">
+        <a href="/users/post_an_idea.php"><span class="postAnIdea">post an idea</span>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
     </div>
 </div>
 
+
+<div class="container">
+
+    <router-outlet></router-outlet>
+</div>
+
 <!-- credits -->
-<div class="text-center">
-    <p>
-        <a href="http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial" target="_top">Angular 2/5 User Registration and Login Example & Tutorial</a>
-    </p>
-    <p>
-        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
+<div class="jumbotron footer">
+    <div class="text-center">
+        <p>
+            <a href="http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial" target="_top">Angular 2/5 User Registration and Login Example & Tutorial</a>
+        </p>
+        <p>
+            <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+        </p>
+    </div>
 </div>

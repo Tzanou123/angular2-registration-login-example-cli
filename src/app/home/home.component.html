@@ -1,12 +1,14 @@
 ﻿<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
-    <p>You're logged in with Angular 2/5 and Angular CLI!!</p>
+    <h1>Hi {{islogged ? currentUser.username : ""}}!</h1>
+    <p>You're logged in with Angular 2!!</p>
     <h3>All registered users:</h3>
-    <ul>
+    <!-- <ul>
         <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
+            {{user.username}} ({{user.first_name}} {{user.last_name}}) - <a (click)="deleteUser(user.id)">Delete</a>
         </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
+    </ul> -->
+    <p *ngIf="islogged">
+        <a [routerLink]="['/']" (click)=" logout() ">Logout</a></p>
+    <p *ngIf="!islogged "><a [routerLink]="[ '/login'] ">Login</a></p>
+
 </div>
